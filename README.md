@@ -71,7 +71,7 @@ El motor de descubrimiento escanea estas rutas buscando archivos `SKILL.md` con 
 | `~/.copilot/installed-plugins/` | Copilot | plugin |
 | `~/.claude/skills/` | Claude | local |
 | `~/.claude/plugins/marketplaces/` | Claude | marketplace |
-| `C:/02 - Accenture/03 - Repositorios` | Projects | repo |
+| `C:/02 /03 - Repositorios` | Projects | repo |
 
 Las skills duplicadas se agrupan por ID, manteniendo las distintas ubicaciones como `locations[]`.
 
