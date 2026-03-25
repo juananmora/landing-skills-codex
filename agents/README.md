@@ -16,3 +16,8 @@ Files:
 The project wiring lives in [`.codex/config.toml`](/C:/02%20-%20Accenture/03%20-%20Repositorios/landing-skills-codex/.codex/config.toml).
 
 This follows the Codex config model where `config.toml` can declare `[agents.<name>]` entries and each role can point at a dedicated TOML `config_file`.
+
+Additional project guidance:
+
+- [AGENTS.md](/C:/02%20-%20Accenture/03%20-%20Repositorios/landing-skills-codex/AGENTS.md): role map and project rules
+- [workflow-example.md](/C:/02%20-%20Accenture/03%20-%20Repositorios/landing-skills-codex/agents/workflow-example.md): example multi-agent flow for portals of this type
