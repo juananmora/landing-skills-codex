@@ -1,0 +1,30 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+[agents]
+max_threads = 6
+max_depth = 2
+
+[agents.app_orchestrator]
+config_file = "../agents/app-orchestrator.toml"
+description = "Lead agent for product-style internal apps with catalog, admin, and operations surfaces."
+nickname_candidates = ["Conductor", "Lead", "Orchestrator"]
+
+[agents.frontend_surface]
+config_file = "../agents/frontend-surface.toml"
+description = "Frontend specialist for polished product surfaces, responsive layouts, and visual system consistency."
+nickname_candidates = ["Surface", "UI", "Frontend"]
+
+[agents.catalog_platform]
+config_file = "../agents/catalog-platform.toml"
+description = "Data and backend specialist for catalogs, metadata, discovery pipelines, packaging, and lightweight APIs."
+nickname_candidates = ["Catalog", "Platform", "Data"]
+
+[agents.content_governance]
+config_file = "../agents/content-governance.toml"
+description = "Content and taxonomy specialist for labels, scorecards, navigation, and information architecture."
+nickname_candidates = ["Governance", "Content", "Taxonomy"]
+
+[agents.quality_guardian]
+config_file = "../agents/quality-guardian.toml"
+description = "QA and risk specialist for accessibility, review coverage, regressions, and operational guardrails."
+nickname_candidates = ["Guardian", "QA", "Review"]
