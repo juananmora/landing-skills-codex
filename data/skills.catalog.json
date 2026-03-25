@@ -1,0 +1,258 @@
+{
+  "skills": [
+    {
+      "id": "group-api-documentation-generator--generates-openapi-3-0-specs-and-interactive-documentation-from-source-code-annotations-or-existing-endpoints",
+      "name": "API Documentation Generator",
+      "variant": "",
+      "category": "Agents",
+      "path": "/home/runner/.agents/skills/api-doc-generator",
+      "description": "Generates OpenAPI 3.0 specs and interactive documentation from source code annotations or existing endpoints.",
+      "downloads": 0,
+      "detailViews": 0,
+      "securityStatus": "Unknown",
+      "validationStatus": "Unknown",
+      "score": 84,
+      "lastReviewed": "2026-03-25",
+      "maintainer": "Agents Local",
+      "tags": [
+        "Agents",
+        "local",
+        "Agents / local",
+        "Unknown"
+      ],
+      "downloadPath": "/api/download/group-api-documentation-generator--generates-openapi-3-0-specs-and-interactive-documentation-from-source-code-annotations-or-existing-endpoints",
+      "sourceFamily": "Agents",
+      "sourceType": "local",
+      "sourceLabel": "Agents / local",
+      "markdownPath": "/home/runner/.agents/skills/api-doc-generator/skill.md",
+      "locations": [
+        {
+          "path": "/home/runner/.agents/skills/api-doc-generator",
+          "markdownPath": "/home/runner/.agents/skills/api-doc-generator/skill.md",
+          "sourceFamily": "Agents",
+          "sourceType": "local",
+          "sourceLabel": "Agents / local",
+          "lastReviewed": "2026-03-25"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": false
+    },
+    {
+      "id": "group-azure-cost-optimization--analyzes-azure-resource-usage-and-proposes-concrete-cost-reduction-actions-with-estimated-monthly-savings",
+      "name": "Azure Cost Optimization",
+      "variant": "",
+      "category": "Azure",
+      "path": "/home/runner/.agents/skills/azure-cost-optimization",
+      "description": "Analyzes Azure resource usage and proposes concrete cost reduction actions with estimated monthly savings.",
+      "downloads": 0,
+      "detailViews": 0,
+      "securityStatus": "Unknown",
+      "validationStatus": "Unknown",
+      "score": 84,
+      "lastReviewed": "2026-03-25",
+      "maintainer": "Agents Local",
+      "tags": [
+        "Agents",
+        "local",
+        "Agents / local",
+        "Azure",
+        "Unknown"
+      ],
+      "downloadPath": "/api/download/group-azure-cost-optimization--analyzes-azure-resource-usage-and-proposes-concrete-cost-reduction-actions-with-estimated-monthly-savings",
+      "sourceFamily": "Agents",
+      "sourceType": "local",
+      "sourceLabel": "Agents / local",
+      "markdownPath": "/home/runner/.agents/skills/azure-cost-optimization/skill.md",
+      "locations": [
+        {
+          "path": "/home/runner/.agents/skills/azure-cost-optimization",
+          "markdownPath": "/home/runner/.agents/skills/azure-cost-optimization/skill.md",
+          "sourceFamily": "Agents",
+          "sourceType": "local",
+          "sourceLabel": "Agents / local",
+          "lastReviewed": "2026-03-25"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": false
+    },
+    {
+      "id": "group-frontend-component-generator--scaffolds-react-or-vue-components-from-design-tokens-or-figma-exports-produces-accessible-tested-production-grade-code",
+      "name": "Frontend Component Generator",
+      "variant": "",
+      "category": "Frontend",
+      "path": "/home/runner/.agents/skills/codex-frontend-component-generator",
+      "description": "Scaffolds React or Vue components from design tokens or Figma exports. Produces accessible, tested, production-grade code.",
+      "downloads": 0,
+      "detailViews": 1,
+      "securityStatus": "Unknown",
+      "validationStatus": "Unknown",
+      "score": 84,
+      "lastReviewed": "2026-03-25",
+      "maintainer": "Agents Local",
+      "tags": [
+        "Agents",
+        "local",
+        "Agents / local",
+        "Frontend",
+        "Unknown"
+      ],
+      "downloadPath": "/api/download/group-frontend-component-generator--scaffolds-react-or-vue-components-from-design-tokens-or-figma-exports-produces-accessible-tested-production-grade-code",
+      "sourceFamily": "Agents",
+      "sourceType": "local",
+      "sourceLabel": "Agents / local",
+      "markdownPath": "/home/runner/.agents/skills/codex-frontend-component-generator/skill.md",
+      "locations": [
+        {
+          "path": "/home/runner/.agents/skills/codex-frontend-component-generator",
+          "markdownPath": "/home/runner/.agents/skills/codex-frontend-component-generator/skill.md",
+          "sourceFamily": "Agents",
+          "sourceType": "local",
+          "sourceLabel": "Agents / local",
+          "lastReviewed": "2026-03-25"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": false
+    },
+    {
+      "id": "group-openai-code-review--performs-automated-code-reviews-using-gpt-4-flagging-security-issues-style-violations-and-performance-bottlenecks",
+      "name": "OpenAI Code Review",
+      "variant": "",
+      "category": "OpenAI",
+      "path": "/home/runner/.agents/skills/codex-openai-code-review",
+      "description": "Performs automated code reviews using GPT-4, flagging security issues, style violations, and performance bottlenecks.",
+      "downloads": 0,
+      "detailViews": 0,
+      "securityStatus": "Unknown",
+      "validationStatus": "Unknown",
+      "score": 84,
+      "lastReviewed": "2026-03-25",
+      "maintainer": "Agents Local",
+      "tags": [
+        "Agents",
+        "local",
+        "Agents / local",
+        "OpenAI",
+        "Unknown"
+      ],
+      "downloadPath": "/api/download/group-openai-code-review--performs-automated-code-reviews-using-gpt-4-flagging-security-issues-style-violations-and-performance-bottlenecks",
+      "sourceFamily": "Agents",
+      "sourceType": "local",
+      "sourceLabel": "Agents / local",
+      "markdownPath": "/home/runner/.agents/skills/codex-openai-code-review/skill.md",
+      "locations": [
+        {
+          "path": "/home/runner/.agents/skills/codex-openai-code-review",
+          "markdownPath": "/home/runner/.agents/skills/codex-openai-code-review/skill.md",
+          "sourceFamily": "Agents",
+          "sourceType": "local",
+          "sourceLabel": "Agents / local",
+          "lastReviewed": "2026-03-25"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": false
+    },
+    {
+      "id": "group-playwright-test-generator--generates-end-to-end-playwright-tests-from-user-stories-and-component-specs-supports-typescript-and-page-object-model-patterns",
+      "name": "Playwright Test Generator",
+      "variant": "",
+      "category": "Testing",
+      "path": "/home/runner/.agents/skills/codex-playwright-test-generator",
+      "description": "Generates end-to-end Playwright tests from user stories and component specs. Supports TypeScript and Page Object Model patterns.",
+      "downloads": 0,
+      "detailViews": 0,
+      "securityStatus": "Unknown",
+      "validationStatus": "Unknown",
+      "score": 84,
+      "lastReviewed": "2026-03-25",
+      "maintainer": "Agents Local",
+      "tags": [
+        "Agents",
+        "local",
+        "Agents / local",
+        "Testing",
+        "Unknown"
+      ],
+      "downloadPath": "/api/download/group-playwright-test-generator--generates-end-to-end-playwright-tests-from-user-stories-and-component-specs-supports-typescript-and-page-object-model-patterns",
+      "sourceFamily": "Agents",
+      "sourceType": "local",
+      "sourceLabel": "Agents / local",
+      "markdownPath": "/home/runner/.agents/skills/codex-playwright-test-generator/skill.md",
+      "locations": [
+        {
+          "path": "/home/runner/.agents/skills/codex-playwright-test-generator",
+          "markdownPath": "/home/runner/.agents/skills/codex-playwright-test-generator/skill.md",
+          "sourceFamily": "Agents",
+          "sourceType": "local",
+          "sourceLabel": "Agents / local",
+          "lastReviewed": "2026-03-25"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": false
+    },
+    {
+      "id": "group-security-posture-review--audits-cloud-and-application-security-posture-against-cis-benchmarks-flagging-critical-gaps-and-remediation-steps",
+      "name": "Security Posture Review",
+      "variant": "",
+      "category": "Security",
+      "path": "/home/runner/.agents/skills/security-posture-review",
+      "description": "Audits cloud and application security posture against CIS benchmarks, flagging critical gaps and remediation steps.",
+      "downloads": 0,
+      "detailViews": 0,
+      "securityStatus": "Unknown",
+      "validationStatus": "Unknown",
+      "score": 84,
+      "lastReviewed": "2026-03-25",
+      "maintainer": "Agents Local",
+      "tags": [
+        "Agents",
+        "local",
+        "Agents / local",
+        "Security",
+        "Unknown"
+      ],
+      "downloadPath": "/api/download/group-security-posture-review--audits-cloud-and-application-security-posture-against-cis-benchmarks-flagging-critical-gaps-and-remediation-steps",
+      "sourceFamily": "Agents",
+      "sourceType": "local",
+      "sourceLabel": "Agents / local",
+      "markdownPath": "/home/runner/.agents/skills/security-posture-review/skill.md",
+      "locations": [
+        {
+          "path": "/home/runner/.agents/skills/security-posture-review",
+          "markdownPath": "/home/runner/.agents/skills/security-posture-review/skill.md",
+          "sourceFamily": "Agents",
+          "sourceType": "local",
+          "sourceLabel": "Agents / local",
+          "lastReviewed": "2026-03-25"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": false
+    }
+  ],
+  "summary": {
+    "totalSkills": 6,
+    "totalDownloads": 0,
+    "totalDetailViews": 1,
+    "securityPassed": 0,
+    "validationPassed": 0,
+    "attentionRequired": 6,
+    "reviewStale": 0
+  },
+  "inventory": {
+    "totalSkillFiles": 6,
+    "uniqueSkills": 6,
+    "groupedAway": 0,
+    "duplicateGroups": [],
+    "sources": [
+      {
+        "label": "Agents / local",
+        "count": 6
+      }
+    ]
+  }
+}

@@ -144,7 +144,7 @@ const buildDiscoveredSkill = async (skillFilePath, rootConfig, existingByPath) =
   const relativeFromBase = relative(relativeBase, skillDir).split(sep).join("/");
   const pathId = slugify(relativeFromBase);
   const name = frontmatter.name || basename(skillDir);
-  const description = frontmatter.description || extractBodyDescription(raw) || "Skill descubierta automaticamente desde disco.";
+  const description = frontmatter.description || extractBodyDescription(raw) || "Skill automatically discovered from disk.";
   const sourcePath = skillDir.split(sep).join("/");
   const sourceLabel = `${rootConfig.sourceFamily} / ${rootConfig.sourceType}`;
 
