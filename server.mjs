@@ -102,7 +102,7 @@ const normalizeSkill = (skill) => {
     ...skill,
     id,
     name: skill.name || id,
-    description: skill.description || "Sin descripcion disponible.",
+    description: skill.description || "No description available.",
     category: skill.category || "General",
     path: skill.path || "",
     variant: skill.variant || "",
@@ -259,7 +259,7 @@ const extractMarkdownInsights = (markdown, fallbackDescription) => {
     .filter((line) => line.length > 30);
 
   return {
-    overview: paragraphs[0] || fallbackDescription || "Sin resumen disponible.",
+    overview: paragraphs[0] || fallbackDescription || "No summary available.",
     usage: lines.find((line) => /^(when|use for|trigger|do not use)/i.test(line)) || "",
     headings,
     bullets

@@ -1,0 +1,531 @@
+{
+  "skills": [
+    {
+      "id": "codex-openai-code-review",
+      "name": "OpenAI Code Review",
+      "variant": "",
+      "category": "OpenAI",
+      "path": "/demo/codex/skills/codex-openai-code-review",
+      "description": "Performs automated code reviews using GPT-4, flagging security issues, style violations, and performance bottlenecks.",
+      "downloads": 1540,
+      "detailViews": 313,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 92,
+      "lastReviewed": "2025-03-22",
+      "maintainer": "Platform Engineering",
+      "tags": [
+        "OpenAI",
+        "Codex",
+        "Passed",
+        "Verified",
+        "Codex / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/codex-openai-code-review",
+      "sourceFamily": "Codex",
+      "sourceType": "local",
+      "sourceLabel": "Codex / local",
+      "markdownPath": "/demo/codex/skills/codex-openai-code-review/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/codex/skills/codex-openai-code-review",
+          "markdownPath": "/demo/codex/skills/codex-openai-code-review/SKILL.md",
+          "sourceFamily": "Codex",
+          "sourceType": "local",
+          "sourceLabel": "Codex / local",
+          "lastReviewed": "2025-03-22"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "codex-frontend-component-generator",
+      "name": "Frontend Component Generator",
+      "variant": "",
+      "category": "Frontend",
+      "path": "/demo/codex/skills/codex-frontend-component-generator",
+      "description": "Scaffolds React and Vue components from design tokens or Figma exports. Produces accessible, tested, production-grade code.",
+      "downloads": 1230,
+      "detailViews": 275,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 89,
+      "lastReviewed": "2025-03-20",
+      "maintainer": "Frontend Guild",
+      "tags": [
+        "Frontend",
+        "React",
+        "Vue",
+        "Codex",
+        "Passed",
+        "Verified",
+        "OpenAI",
+        "Codex / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/codex-frontend-component-generator",
+      "sourceFamily": "Codex",
+      "sourceType": "local",
+      "sourceLabel": "Codex / local",
+      "markdownPath": "/demo/codex/skills/codex-frontend-component-generator/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/codex/skills/codex-frontend-component-generator",
+          "markdownPath": "/demo/codex/skills/codex-frontend-component-generator/SKILL.md",
+          "sourceFamily": "Codex",
+          "sourceType": "local",
+          "sourceLabel": "Codex / local",
+          "lastReviewed": "2025-03-20"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "codex-playwright-test-generator",
+      "name": "Playwright Test Generator",
+      "variant": "",
+      "category": "Testing",
+      "path": "/demo/codex/skills/codex-playwright-test-generator",
+      "description": "Generates end-to-end Playwright tests from user stories and component specs. Supports TypeScript and Page Object Model patterns.",
+      "downloads": 980,
+      "detailViews": 214,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 87,
+      "lastReviewed": "2025-03-21",
+      "maintainer": "QA Platform",
+      "tags": [
+        "Testing",
+        "Playwright",
+        "Codex",
+        "Passed",
+        "Verified",
+        "Codex / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/codex-playwright-test-generator",
+      "sourceFamily": "Codex",
+      "sourceType": "local",
+      "sourceLabel": "Codex / local",
+      "markdownPath": "/demo/codex/skills/codex-playwright-test-generator/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/codex/skills/codex-playwright-test-generator",
+          "markdownPath": "/demo/codex/skills/codex-playwright-test-generator/SKILL.md",
+          "sourceFamily": "Codex",
+          "sourceType": "local",
+          "sourceLabel": "Codex / local",
+          "lastReviewed": "2025-03-21"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "claude-azure-bicep-scaffolder",
+      "name": "Azure Bicep Scaffolder",
+      "variant": "",
+      "category": "Azure",
+      "path": "/demo/claude/skills/claude-azure-bicep-scaffolder",
+      "description": "Scaffolds Azure Bicep infrastructure templates for common patterns including VMs, AKS, and App Services.",
+      "downloads": 870,
+      "detailViews": 192,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 88,
+      "lastReviewed": "2025-03-18",
+      "maintainer": "Cloud Infrastructure Team",
+      "tags": [
+        "Azure",
+        "Bicep",
+        "Claude",
+        "Passed",
+        "Verified",
+        "Claude / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/claude-azure-bicep-scaffolder",
+      "sourceFamily": "Claude",
+      "sourceType": "local",
+      "sourceLabel": "Claude / local",
+      "markdownPath": "/demo/claude/skills/claude-azure-bicep-scaffolder/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/claude/skills/claude-azure-bicep-scaffolder",
+          "markdownPath": "/demo/claude/skills/claude-azure-bicep-scaffolder/SKILL.md",
+          "sourceFamily": "Claude",
+          "sourceType": "local",
+          "sourceLabel": "Claude / local",
+          "lastReviewed": "2025-03-18"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "copilot-security-code-reviewer",
+      "name": "Security Code Reviewer",
+      "variant": "",
+      "category": "Security",
+      "path": "/demo/copilot/skills/copilot-security-code-reviewer",
+      "description": "Reviews code diffs for OWASP Top-10 vulnerabilities, injection risks, and secret leaks, with inline fix suggestions.",
+      "downloads": 760,
+      "detailViews": 178,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 94,
+      "lastReviewed": "2025-03-23",
+      "maintainer": "Security Guild",
+      "tags": [
+        "Security",
+        "OWASP",
+        "Copilot",
+        "Passed",
+        "Verified",
+        "Copilot / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/copilot-security-code-reviewer",
+      "sourceFamily": "Copilot",
+      "sourceType": "local",
+      "sourceLabel": "Copilot / local",
+      "markdownPath": "/demo/copilot/skills/copilot-security-code-reviewer/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/copilot/skills/copilot-security-code-reviewer",
+          "markdownPath": "/demo/copilot/skills/copilot-security-code-reviewer/SKILL.md",
+          "sourceFamily": "Copilot",
+          "sourceType": "local",
+          "sourceLabel": "Copilot / local",
+          "lastReviewed": "2025-03-23"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "claude-mcp-server-builder",
+      "name": "MCP Server Builder",
+      "variant": "",
+      "category": "Developer Tools",
+      "path": "/demo/claude/skills/claude-mcp-server-builder",
+      "description": "Scaffolds Model Context Protocol (MCP) servers with tool definitions, resource handlers, and transport layers.",
+      "downloads": 650,
+      "detailViews": 143,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 90,
+      "lastReviewed": "2025-03-19",
+      "maintainer": "Platform Engineering",
+      "tags": [
+        "Developer Tools",
+        "MCP",
+        "Claude",
+        "Passed",
+        "Verified",
+        "Claude / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/claude-mcp-server-builder",
+      "sourceFamily": "Claude",
+      "sourceType": "local",
+      "sourceLabel": "Claude / local",
+      "markdownPath": "/demo/claude/skills/claude-mcp-server-builder/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/claude/skills/claude-mcp-server-builder",
+          "markdownPath": "/demo/claude/skills/claude-mcp-server-builder/SKILL.md",
+          "sourceFamily": "Claude",
+          "sourceType": "local",
+          "sourceLabel": "Claude / local",
+          "lastReviewed": "2025-03-19"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "copilot-openai-image-generator",
+      "name": "OpenAI Image Generator",
+      "variant": "",
+      "category": "OpenAI",
+      "path": "/demo/copilot/skills/copilot-openai-image-generator",
+      "description": "Generates DALL-E images from natural language prompts with configurable aspect ratios, quality and style presets.",
+      "downloads": 590,
+      "detailViews": 130,
+      "securityStatus": "Review",
+      "validationStatus": "Pending",
+      "score": 74,
+      "lastReviewed": "2025-02-28",
+      "maintainer": "Creative Tools Team",
+      "tags": [
+        "OpenAI",
+        "DALL-E",
+        "Copilot",
+        "Review",
+        "Pending",
+        "Copilot / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/copilot-openai-image-generator",
+      "sourceFamily": "Copilot",
+      "sourceType": "local",
+      "sourceLabel": "Copilot / local",
+      "markdownPath": "/demo/copilot/skills/copilot-openai-image-generator/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/copilot/skills/copilot-openai-image-generator",
+          "markdownPath": "/demo/copilot/skills/copilot-openai-image-generator/SKILL.md",
+          "sourceFamily": "Copilot",
+          "sourceType": "local",
+          "sourceLabel": "Copilot / local",
+          "lastReviewed": "2025-02-28"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "codex-docx-report-generator",
+      "name": "DOCX Report Generator",
+      "variant": "",
+      "category": "Productivity",
+      "path": "/demo/codex/skills/codex-docx-report-generator",
+      "description": "Generates structured Word DOCX reports from data templates and markdown content with custom corporate styling.",
+      "downloads": 520,
+      "detailViews": 116,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 83,
+      "lastReviewed": "2025-03-10",
+      "maintainer": "Productivity Guild",
+      "tags": [
+        "Productivity",
+        "DOCX",
+        "Reports",
+        "Codex",
+        "Passed",
+        "Verified",
+        "Codex / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/codex-docx-report-generator",
+      "sourceFamily": "Codex",
+      "sourceType": "local",
+      "sourceLabel": "Codex / local",
+      "markdownPath": "/demo/codex/skills/codex-docx-report-generator/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/codex/skills/codex-docx-report-generator",
+          "markdownPath": "/demo/codex/skills/codex-docx-report-generator/SKILL.md",
+          "sourceFamily": "Codex",
+          "sourceType": "local",
+          "sourceLabel": "Codex / local",
+          "lastReviewed": "2025-03-10"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "claude-debug-trace-analyzer",
+      "name": "Debug Trace Analyzer",
+      "variant": "",
+      "category": "Developer Tools",
+      "path": "/demo/claude/skills/claude-debug-trace-analyzer",
+      "description": "Analyzes stack traces, error logs, and debug output to provide root cause analysis and actionable fix suggestions.",
+      "downloads": 480,
+      "detailViews": 109,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 86,
+      "lastReviewed": "2025-03-17",
+      "maintainer": "Developer Experience",
+      "tags": [
+        "Developer Tools",
+        "Debugging",
+        "Claude",
+        "Passed",
+        "Verified",
+        "Claude / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/claude-debug-trace-analyzer",
+      "sourceFamily": "Claude",
+      "sourceType": "local",
+      "sourceLabel": "Claude / local",
+      "markdownPath": "/demo/claude/skills/claude-debug-trace-analyzer/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/claude/skills/claude-debug-trace-analyzer",
+          "markdownPath": "/demo/claude/skills/claude-debug-trace-analyzer/SKILL.md",
+          "sourceFamily": "Claude",
+          "sourceType": "local",
+          "sourceLabel": "Claude / local",
+          "lastReviewed": "2025-03-17"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "copilot-pptx-deck-builder",
+      "name": "PPTX Deck Builder",
+      "variant": "",
+      "category": "Productivity",
+      "path": "/demo/copilot/skills/copilot-pptx-deck-builder",
+      "description": "Builds branded PowerPoint presentations from structured outlines with automatic slide layout recommendations.",
+      "downloads": 440,
+      "detailViews": 98,
+      "securityStatus": "Passed",
+      "validationStatus": "Pending",
+      "score": 79,
+      "lastReviewed": "2025-03-05",
+      "maintainer": "Productivity Guild",
+      "tags": [
+        "Productivity",
+        "PPTX",
+        "Presentations",
+        "Copilot",
+        "Passed",
+        "Pending",
+        "Copilot / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/copilot-pptx-deck-builder",
+      "sourceFamily": "Copilot",
+      "sourceType": "local",
+      "sourceLabel": "Copilot / local",
+      "markdownPath": "/demo/copilot/skills/copilot-pptx-deck-builder/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/copilot/skills/copilot-pptx-deck-builder",
+          "markdownPath": "/demo/copilot/skills/copilot-pptx-deck-builder/SKILL.md",
+          "sourceFamily": "Copilot",
+          "sourceType": "local",
+          "sourceLabel": "Copilot / local",
+          "lastReviewed": "2025-03-05"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "codex-css-design-tokens",
+      "name": "CSS Design Tokens",
+      "variant": "",
+      "category": "Frontend",
+      "path": "/demo/codex/skills/codex-css-design-tokens",
+      "description": "Generates consistent CSS custom properties, utility classes, and component tokens from a design specification file.",
+      "downloads": 390,
+      "detailViews": 88,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 85,
+      "lastReviewed": "2025-03-12",
+      "maintainer": "Design Systems",
+      "tags": [
+        "Frontend",
+        "CSS",
+        "Design",
+        "Codex",
+        "Passed",
+        "Verified",
+        "OpenAI",
+        "Codex / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/codex-css-design-tokens",
+      "sourceFamily": "Codex",
+      "sourceType": "local",
+      "sourceLabel": "Codex / local",
+      "markdownPath": "/demo/codex/skills/codex-css-design-tokens/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/codex/skills/codex-css-design-tokens",
+          "markdownPath": "/demo/codex/skills/codex-css-design-tokens/SKILL.md",
+          "sourceFamily": "Codex",
+          "sourceType": "local",
+          "sourceLabel": "Codex / local",
+          "lastReviewed": "2025-03-12"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    },
+    {
+      "id": "claude-azure-entra-auth",
+      "name": "Azure Entra Auth",
+      "variant": "",
+      "category": "Azure",
+      "path": "/demo/claude/skills/claude-azure-entra-auth",
+      "description": "Implements Azure Entra ID authentication flows for web and API applications with full MSAL integration.",
+      "downloads": 360,
+      "detailViews": 79,
+      "securityStatus": "Passed",
+      "validationStatus": "Verified",
+      "score": 91,
+      "lastReviewed": "2025-03-16",
+      "maintainer": "Identity Platform",
+      "tags": [
+        "Azure",
+        "Entra",
+        "Authentication",
+        "Claude",
+        "Passed",
+        "Verified",
+        "Claude / local",
+        "local"
+      ],
+      "downloadPath": "/api/download/claude-azure-entra-auth",
+      "sourceFamily": "Claude",
+      "sourceType": "local",
+      "sourceLabel": "Claude / local",
+      "markdownPath": "/demo/claude/skills/claude-azure-entra-auth/SKILL.md",
+      "locations": [
+        {
+          "path": "/demo/claude/skills/claude-azure-entra-auth",
+          "markdownPath": "/demo/claude/skills/claude-azure-entra-auth/SKILL.md",
+          "sourceFamily": "Claude",
+          "sourceType": "local",
+          "sourceLabel": "Claude / local",
+          "lastReviewed": "2025-03-16"
+        }
+      ],
+      "locationCount": 1,
+      "zipAvailable": true
+    }
+  ],
+  "summary": {
+    "totalSkills": 12,
+    "totalDownloads": 8810,
+    "totalDetailViews": 1935,
+    "securityPassed": 11,
+    "validationPassed": 10,
+    "attentionRequired": 2,
+    "reviewStale": 12
+  },
+  "inventory": {
+    "totalSkillFiles": 12,
+    "uniqueSkills": 12,
+    "groupedAway": 0,
+    "duplicateGroups": [],
+    "sources": [
+      {
+        "label": "Codex / local",
+        "count": 5
+      },
+      {
+        "label": "Claude / local",
+        "count": 4
+      },
+      {
+        "label": "Copilot / local",
+        "count": 3
+      }
+    ]
+  }
+}

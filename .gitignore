@@ -2,10 +2,12 @@
 node_modules/
 
 # Generated catalog (contains local filesystem paths; regenerate via npm run discover:skills)
-data/skills.catalog.json
+# The committed skills.catalog.json is a simulated demo catalog with no real paths.
+# data/skills.catalog.json
 
 # Generated downloads (ZIPs are regenerated via npm run package:skills)
-downloads/
+# The committed downloads/ folder contains simulated demo ZIPs for the demo catalog.
+# downloads/
 
 # OS files
 Thumbs.db

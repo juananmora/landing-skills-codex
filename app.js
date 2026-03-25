@@ -8,7 +8,7 @@ const DEFAULT_TOPIC = {
 };
 
 const formatNumber = (value) => new Intl.NumberFormat("es-ES").format(value || 0);
-const formatDateLabel = (date) => (date ? `Review ${date}` : "Review pendiente");
+const formatDateLabel = (date) => (date ? `Review ${date}` : "Review pending");
 
 const state = {
   catalog: null,
@@ -45,7 +45,7 @@ const getRepoName = (skill) => {
 const getSourceDisplayLabel = (skill) => {
   const repoName = getRepoName(skill);
   if (repoName) return repoName;
-  return skill?.sourceLabel || "Origen detectado";
+  return skill?.sourceLabel || "Detected source";
 };
 
 const getSkillTypeLabel = (skill) => {
@@ -226,22 +226,22 @@ const getDetailSkill = () =>
 
 const getSkillBadges = (skill) => {
   const badges = [];
-  if (state.favorites.has(skill.id)) badges.push("Favorita");
+  if (state.favorites.has(skill.id)) badges.push("Favorite");
   if (skill.tags?.includes("OpenAI")) badges.push("OpenAI");
   if (skill.tags?.includes("Azure")) badges.push("Azure");
   if (skill.tags?.includes("System")) badges.push("System");
-  if (Number(skill.locationCount || 0) > 1) badges.push(`${skill.locationCount} ubicaciones`);
+  if (Number(skill.locationCount || 0) > 1) badges.push(`${skill.locationCount} locations`);
   if (getRepoName(skill)) badges.push(getRepoName(skill));
-  if (skill.downloads >= 1200) badges.push("Top descargada");
-  if (dateDiffInDays(skill.lastReviewed) <= 3) badges.push("Recien revisada");
+  if (skill.downloads >= 1200) badges.push("Top downloaded");
+  if (dateDiffInDays(skill.lastReviewed) <= 3) badges.push("Recently reviewed");
   return badges.slice(0, 4);
 };
 
 const getSkillAlerts = (skill) => {
   const alerts = [];
-  if (skill.securityStatus !== "Passed") alerts.push({ tone: "warn", label: "Security review pendiente" });
-  if (skill.validationStatus !== "Verified") alerts.push({ tone: "warn", label: "Validacion pendiente" });
-  if (dateDiffInDays(skill.lastReviewed) > 10) alerts.push({ tone: "muted", label: "Review antigua" });
+  if (skill.securityStatus !== "Passed") alerts.push({ tone: "warn", label: "Security review pending" });
+  if (skill.validationStatus !== "Verified") alerts.push({ tone: "warn", label: "Validation pending" });
+  if (dateDiffInDays(skill.lastReviewed) > 10) alerts.push({ tone: "muted", label: "Stale review" });
   return alerts;
 };
 
@@ -307,8 +307,8 @@ const createDraftSkill = () => {
     id: `new-skill-${timestamp}`,
     name: "new-skill",
     category: "General",
-    path: "C:/ruta/a/la/skill",
-    description: "Nueva skill pendiente de completar desde el admin.",
+    path: "C:/path/to/skill",
+    description: "New skill pending completion from admin.",
     downloads: 0,
     detailViews: 0,
     securityStatus: "Review",
@@ -322,7 +322,7 @@ const createDraftSkill = () => {
 
   syncCatalog([nextSkill, ...state.catalog.skills]);
   state.adminSkillId = nextSkill.id;
-  state.adminMessage = "Nueva skill creada en local. Guardala para persistirla.";
+  state.adminMessage = "New skill created locally. Save to persist it.";
   render();
 };
 const deleteSelectedSkill = () => {
@@ -332,7 +332,7 @@ const deleteSelectedSkill = () => {
   const nextSkills = state.catalog.skills.filter((skill) => skill.id !== selectedSkill.id);
   syncCatalog(nextSkills);
   state.adminSkillId = nextSkills[0]?.id || "";
-  state.adminMessage = `Skill ${selectedSkill.name} eliminada en local. Guarda para confirmar.`;
+  state.adminMessage = `Skill ${selectedSkill.name} removed locally. Save to confirm.`;
   if (state.detailSkillId === selectedSkill.id) {
     state.detailSkillId = "";
     state.detailData = null;
@@ -342,7 +342,7 @@ const deleteSelectedSkill = () => {
 
 const persistCatalog = async () => {
   state.adminSaving = true;
-  state.adminMessage = "Guardando cambios en el catalogo...";
+  state.adminMessage = "Saving catalog changes...";
   render();
 
   try {
@@ -355,9 +355,9 @@ const persistCatalog = async () => {
     if (!response.ok) throw new Error(`Save failed with status ${response.status}`);
 
     state.catalog = await response.json();
-    state.adminMessage = "Catalogo guardado correctamente.";
+    state.adminMessage = "Catalog saved successfully.";
   } catch (error) {
-    state.adminMessage = `No se pudo guardar el catalogo. ${error instanceof Error ? error.message : "Unknown error"}.`;
+    state.adminMessage = `Could not save the catalog. ${error instanceof Error ? error.message : "Unknown error"}.`;
   } finally {
     state.adminSaving = false;
     render();
@@ -366,7 +366,7 @@ const persistCatalog = async () => {
 
 const regenerateZips = async () => {
   state.adminZipBusy = true;
-  state.adminZipMessage = "Regenerando paquetes ZIP...";
+  state.adminZipMessage = "Regenerating ZIP packages...";
   render();
 
   try {
@@ -376,9 +376,9 @@ const regenerateZips = async () => {
     const payload = await response.json();
     const packaged = payload.results.filter((entry) => entry.status === "packaged").length;
     const skipped = payload.results.filter((entry) => entry.status === "skipped").length;
-    state.adminZipMessage = `ZIPs regenerados. ${packaged} empaquetadas, ${skipped} omitidas.`;
+    state.adminZipMessage = `ZIPs regenerated. ${packaged} packaged, ${skipped} skipped.`;
   } catch (error) {
-    state.adminZipMessage = `No se pudieron regenerar los ZIPs. ${error instanceof Error ? error.message : "Unknown error"}.`;
+    state.adminZipMessage = `Could not regenerate ZIPs. ${error instanceof Error ? error.message : "Unknown error"}.`;
   } finally {
     state.adminZipBusy = false;
     render();
@@ -387,7 +387,7 @@ const regenerateZips = async () => {
 
 const discoverSkills = async () => {
   state.adminDiscoveryBusy = true;
-  state.adminMessage = "Rastreando skills en disco y sincronizando el catalogo...";
+  state.adminMessage = "Scanning skills on disk and syncing the catalog...";
   render();
 
   try {
@@ -395,9 +395,9 @@ const discoverSkills = async () => {
     if (!response.ok) throw new Error(`Discovery failed with status ${response.status}`);
 
     state.catalog = await response.json();
-    state.adminMessage = `Catalogo sincronizado desde disco. ${state.catalog.summary.totalSkills} skills detectadas.`;
+    state.adminMessage = `Catalog synced from disk. ${state.catalog.summary.totalSkills} skills detected.`;
   } catch (error) {
-    state.adminMessage = `No se pudo sincronizar el catalogo desde disco. ${error instanceof Error ? error.message : "Unknown error"}.`;
+    state.adminMessage = `Could not sync catalog from disk. ${error instanceof Error ? error.message : "Unknown error"}.`;
   } finally {
     state.adminDiscoveryBusy = false;
     render();
@@ -452,22 +452,22 @@ const copyPath = async (value) => {
   try {
     await navigator.clipboard.writeText(value);
   } catch {
-    window.prompt("Copia la ruta manualmente", value);
+    window.prompt("Copy the path manually", value);
   }
 };
 
 const renderModalBody = (detailSkill) => {
   if (state.detailLoading) {
-    return '<div class="modal-placeholder">Recuperando resumen real de la skill y su markdown tecnico...</div>';
+    return '<div class="modal-placeholder">Retrieving real skill summary and its technical markdown...</div>';
   }
 
   if (state.detailError) {
-    return `<div class="modal-placeholder is-error">No se pudo cargar la ficha tecnica. ${state.detailError}</div>`;
+    return `<div class="modal-placeholder is-error">Could not load the technical sheet. ${state.detailError}</div>`;
   }
 
   const detail = state.detailData;
   if (!detail) {
-    return '<div class="modal-placeholder">Sin detalle disponible.</div>';
+    return '<div class="modal-placeholder">No detail available.</div>';
   }
 
   return `
@@ -479,8 +479,8 @@ const renderModalBody = (detailSkill) => {
       <span>${getSourceDisplayLabel(detailSkill)}</span>
       <span>${detailSkill.maintainer}</span>
       <span>${formatDateLabel(detailSkill.lastReviewed)}</span>
-      <span>${formatNumber(detailSkill.detailViews)} aperturas</span>
-      ${detail.locationCount > 1 ? `<span>${detail.locationCount} carpetas detectadas</span>` : ""}
+      <span>${formatNumber(detailSkill.detailViews)} views</span>
+      ${detail.locationCount > 1 ? `<span>${detail.locationCount} folders detected</span>` : ""}
     </div>
 
     ${detail.usageHint ? `<section class="modal-section"><p class="eyebrow">Usage hint</p><p class="modal-inline-copy">${detail.usageHint}</p></section>` : ""}
@@ -496,7 +496,7 @@ const renderModalBody = (detailSkill) => {
 
     ${detail.headings.length ? `
       <section class="modal-section">
-        <p class="eyebrow">Secciones del markdown</p>
+        <p class="eyebrow">Markdown sections</p>
         <div class="modal-pills">
           ${detail.headings.map((item) => `<span class="tag">${item}</span>`).join("")}
         </div>
@@ -504,22 +504,22 @@ const renderModalBody = (detailSkill) => {
     ` : ""}
 
     <dl class="modal-grid">
-      <div><dt>Seguridad</dt><dd class="${getStatusTone(detailSkill.securityStatus)}">${detailSkill.securityStatus}</dd></div>
-      <div><dt>Validacion</dt><dd class="${getStatusTone(detailSkill.validationStatus)}">${detailSkill.validationStatus}</dd></div>
-      <div><dt>Descargas</dt><dd>${formatNumber(detailSkill.downloads)}</dd></div>
-      <div><dt>Ubicaciones</dt><dd>${detail.locationCount || 1}</dd></div>
+      <div><dt>Security</dt><dd class="${getStatusTone(detailSkill.securityStatus)}">${detailSkill.securityStatus}</dd></div>
+      <div><dt>Validation</dt><dd class="${getStatusTone(detailSkill.validationStatus)}">${detailSkill.validationStatus}</dd></div>
+      <div><dt>Downloads</dt><dd>${formatNumber(detailSkill.downloads)}</dd></div>
+      <div><dt>Locations</dt><dd>${detail.locationCount || 1}</dd></div>
       <div><dt>Tags</dt><dd>${detailSkill.tags.join(" · ")}</dd></div>
-      <div><dt>Ruta principal</dt><dd class="mono">${detailSkill.path}</dd></div>
+      <div><dt>Main path</dt><dd class="mono">${detailSkill.path}</dd></div>
     </dl>
 
     ${detail.locations?.length ? `
       <section class="modal-section">
-        <p class="eyebrow">Carpetas detectadas</p>
+        <p class="eyebrow">Detected folders</p>
         <div class="location-list">
           ${detail.locations.map((location, index) => `
             <article class="location-item">
               <div class="location-topline">
-                <strong>${index === 0 ? "Principal" : `Ubicacion ${index + 1}`}</strong>
+                <strong>${index === 0 ? "Primary" : `Location ${index + 1}`}</strong>
                 <div class="location-brandline">
                   ${renderOwnerBrand(location, "owner-brand-compact")}
                   <span class="tag">${getSourceDisplayLabel(location)}</span>
@@ -534,7 +534,7 @@ const renderModalBody = (detailSkill) => {
 
     ${detail.relatedSkills?.length ? `
       <section class="modal-section">
-        <p class="eyebrow">Skills relacionadas</p>
+        <p class="eyebrow">Related skills</p>
         <div class="location-list">
           ${detail.relatedSkills.map((relatedSkill) => `
             <article class="location-item">
@@ -549,7 +549,7 @@ const renderModalBody = (detailSkill) => {
               <div class="hero-preview-meta">
                 <span>${relatedSkill.category}</span>
                 <span>${formatDateLabel(relatedSkill.lastReviewed)}</span>
-                ${relatedSkill.locationCount > 1 ? `<span>${relatedSkill.locationCount} ubicaciones</span>` : ""}
+                ${relatedSkill.locationCount > 1 ? `<span>${relatedSkill.locationCount} locations</span>` : ""}
               </div>
             </article>
           `).join("")}
@@ -568,9 +568,9 @@ const renderModalBody = (detailSkill) => {
     ` : ""}
 
     <div class="modal-actions">
-      <button class="button button-primary" type="button" data-download-skill="${detailSkill.id}" ${detailSkill.zipAvailable ? "" : "disabled"}>${detailSkill.zipAvailable ? "Descargar ZIP" : "ZIP pendiente"}</button>
-      <button class="button button-secondary" type="button" data-copy-path="${detailSkill.path}">Copiar path</button>
-      <button class="button button-secondary" type="button" data-close-modal="true">Volver al catalogo</button>
+      <button class="button button-primary" type="button" data-download-skill="${detailSkill.id}" ${detailSkill.zipAvailable ? "" : "disabled"}>${detailSkill.zipAvailable ? "Download ZIP" : "ZIP pending"}</button>
+      <button class="button button-secondary" type="button" data-copy-path="${detailSkill.path}">Copy path</button>
+      <button class="button button-secondary" type="button" data-close-modal="true">Back to catalog</button>
     </div>
   `;
 };
@@ -629,14 +629,14 @@ const render = () => {
 
   if (!state.catalog) {
     renderMessage(
-      "Cargando catalogo de skills...",
-      "Estamos recuperando la fuente de datos versionada del hub para montar la portada y las scorecards."
+      "Loading skills catalog...",
+      "We are retrieving the hub's versioned data source to build the homepage and scorecards."
     );
     return;
   }
 
   const { skills, summary } = state.catalog;
-  const hubOpsStatus = state.adminDiscoveryBusy ? "Descubriendo..." : state.adminZipBusy ? "Empaquetando..." : "Disponible";
+  const hubOpsStatus = state.adminDiscoveryBusy ? "Discovering..." : state.adminZipBusy ? "Packaging..." : "Available";
   if (!state.adminSkillId && skills.length > 0) state.adminSkillId = skills[0].id;
 
   const categories = getCategories();
@@ -684,24 +684,24 @@ const render = () => {
   app.innerHTML = `
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Skill governance para developers</p>
-        <h2>El catalogo de skills de Codex para descubrir, validar y activar capacidades.</h2>
+        <p class="eyebrow">Skill governance for developers</p>
+        <h2>The Codex skills catalog to discover, validate, and activate capabilities.</h2>
         <p class="hero-text">
-          Descubre capacidades listas para usar, revisa scorecards de seguridad y validacion,
-          abre fichas tecnicas con resumen real de markdown y descarga cada skill empaquetada desde un unico hub.
+          Discover ready-to-use capabilities, review security and validation scorecards,
+          open technical sheets with real markdown summaries, and download each packaged skill from a single hub.
         </p>
         <dl class="hero-proof">
-          <div><dt>Catalogo activo</dt><dd>${summary.totalSkills} skills publicadas</dd></div>
-          <div><dt>Confianza operativa</dt><dd>${summary.securityPassed} con seguridad aprobada</dd></div>
-          <div><dt>Adopcion</dt><dd>${formatNumber(summary.totalDownloads)} descargas acumuladas</dd></div>
+          <div><dt>Active catalog</dt><dd>${summary.totalSkills} published skills</dd></div>
+          <div><dt>Operational trust</dt><dd>${summary.securityPassed} with security approved</dd></div>
+          <div><dt>Adoption</dt><dd>${formatNumber(summary.totalDownloads)} cumulative downloads</dd></div>
         </dl>
         <div class="hero-actions">
-          <a class="button button-primary" href="#catalogo">Explorar catalogo</a>
-          <button class="button button-secondary" type="button" data-toggle-favorites="true">${state.favoritesOnly ? "Ver todas" : "Solo favoritas"}</button>
+          <a class="button button-primary" href="#catalog">Explore catalog</a>
+          <button class="button button-secondary" type="button" data-toggle-favorites="true">${state.favoritesOnly ? "View all" : "Favorites only"}</button>
         </div>
       </div>
 
-      <aside class="hero-panel" aria-label="Resumen operacional">
+      <aside class="hero-panel" aria-label="Operational summary">
         <div class="panel-header"><span class="panel-dot"></span><span>release-status</span></div>
         <pre class="code-block"><code>skills.total         = ${summary.totalSkills}
 security.passed     = ${summary.securityPassed}
@@ -709,7 +709,7 @@ validations.passed  = ${summary.validationPassed}
 downloads.aggregate = ${formatNumber(summary.totalDownloads)}
 detail.views        = ${formatNumber(summary.totalDetailViews)}
 runtime             = "npm run dev"</code></pre>
-        <div class="hero-preview-list" aria-label="Preview del catalogo">
+        <div class="hero-preview-list" aria-label="Catalog preview">
           ${heroPreviewSkills.map((skill) => `
             <article class="hero-preview-card">
               <div class="hero-preview-topline"><span class="section-pill">${skill.category}</span><strong>${skill.score}/100</strong></div>
@@ -728,41 +728,41 @@ runtime             = "npm run dev"</code></pre>
           <p class="eyebrow">Top adoption / ${skill.category}</p>
           <h3>${skill.name}</h3>
           <p>${skill.description}</p>
-          <div class="rail-meta"><span>${formatNumber(skill.downloads)} descargas</span><span>${formatNumber(skill.detailViews || 0)} aperturas</span></div>
+          <div class="rail-meta"><span>${formatNumber(skill.downloads)} downloads</span><span>${formatNumber(skill.detailViews || 0)} views</span></div>
         </article>
       `).join("")}
     </section>
 
     <section class="stats-strip" id="scorecards">
-      <article class="metric-card"><span>Total de skills</span><strong>${summary.totalSkills}</strong><small>Cobertura centralizada para catalogo y descubrimiento.</small></article>
-      <article class="metric-card"><span>Seguridad aprobada</span><strong>${summary.securityPassed}</strong><small>Skills con scorecard en estado passed.</small></article>
-      <article class="metric-card"><span>Validaciones OK</span><strong>${summary.validationPassed}</strong><small>Verificaciones funcionales registradas en la ficha.</small></article>
-      <article class="metric-card"><span>Aperturas de ficha</span><strong>${formatNumber(summary.totalDetailViews)}</strong><small>Uso real del hub para discovery y lectura tecnica.</small></article>
-      <article class="metric-card"><span>Atencion requerida</span><strong>${summary.attentionRequired}</strong><small>Skills con review o validacion pendiente.</small></article>
-      <article class="metric-card"><span>Favoritas guardadas</span><strong>${favoriteCount}</strong><small>Shortlist personal persistida en este navegador.</small></article>
+      <article class="metric-card"><span>Total skills</span><strong>${summary.totalSkills}</strong><small>Centralized coverage for catalog and discovery.</small></article>
+      <article class="metric-card"><span>Security approved</span><strong>${summary.securityPassed}</strong><small>Skills with scorecard in passed state.</small></article>
+      <article class="metric-card"><span>Validations OK</span><strong>${summary.validationPassed}</strong><small>Functional verifications registered in the sheet.</small></article>
+      <article class="metric-card"><span>Sheet views</span><strong>${formatNumber(summary.totalDetailViews)}</strong><small>Real hub usage for discovery and technical reading.</small></article>
+      <article class="metric-card"><span>Attention required</span><strong>${summary.attentionRequired}</strong><small>Skills with pending review or validation.</small></article>
+      <article class="metric-card"><span>Saved favorites</span><strong>${favoriteCount}</strong><small>Personal shortlist persisted in this browser.</small></article>
     </section>
 
     <section class="dashboard-layout">
       <div class="dashboard-main">
-        <section class="controls" id="catalogo">
+        <section class="controls" id="catalog">
           <div class="controls-topline">
             <div>
-              <p class="eyebrow">Catalogo operativo</p>
-              <h3 class="controls-title">Busca, filtra y compara skills listas para adopcion.</h3>
+              <p class="eyebrow">Operational catalog</p>
+              <h3 class="controls-title">Search, filter, and compare skills ready for adoption.</h3>
             </div>
             <div class="control-stack">
               <div class="searchbox">
-                <label for="skill-search">Buscar skill</label>
+                <label for="skill-search">Search skill</label>
                 <input id="skill-search" type="search" placeholder="OpenAI, Azure, frontend, deploy..." value="${state.query}" />
               </div>
               <label class="sortbox">
-                <span>Ordenar por</span>
+                <span>Sort by</span>
                 <select id="skill-sort">
                   <option value="featured" ${state.sortBy === "featured" ? "selected" : ""}>Featured</option>
-                  <option value="downloads" ${state.sortBy === "downloads" ? "selected" : ""}>Descargas</option>
+                  <option value="downloads" ${state.sortBy === "downloads" ? "selected" : ""}>Downloads</option>
                   <option value="score" ${state.sortBy === "score" ? "selected" : ""}>Score</option>
-                  <option value="review" ${state.sortBy === "review" ? "selected" : ""}>Ultima review</option>
-                  <option value="name" ${state.sortBy === "name" ? "selected" : ""}>Nombre</option>
+                  <option value="review" ${state.sortBy === "review" ? "selected" : ""}>Latest review</option>
+                  <option value="name" ${state.sortBy === "name" ? "selected" : ""}>Name</option>
                 </select>
               </label>
             </div>
@@ -770,31 +770,31 @@ runtime             = "npm run dev"</code></pre>
 
           <div class="controls-secondary">
             <label class="sortbox">
-              <span>Origen</span>
+              <span>Source</span>
               <select id="skill-source">
                 ${sourceLabels.map((label) => `<option value="${label}" ${state.sourceLabel === label ? "selected" : ""}>${label}</option>`).join("")}
               </select>
             </label>
             <label class="sortbox">
-              <span>Repositorio</span>
+              <span>Repository</span>
               <select id="skill-repo">
                 ${repoOptions.map((repoName) => `<option value="${repoName}" ${state.repoName === repoName ? "selected" : ""}>${repoName}</option>`).join("")}
               </select>
             </label>
           </div>
 
-          <div class="filters" aria-label="Filtrar por categoria">
+          <div class="filters" aria-label="Filter by category">
             ${categories.map((category) => `<button class="filter-chip ${state.category === category ? "is-active" : ""}" data-category="${category}">${category}</button>`).join("")}
-            <button class="filter-chip ${state.favoritesOnly ? "is-active" : ""}" data-toggle-favorites="true">Favoritas</button>
+            <button class="filter-chip ${state.favoritesOnly ? "is-active" : ""}" data-toggle-favorites="true">Favorites</button>
           </div>
 
           <div class="controls-summary">
-            <p class="results-copy">${usingDefaultTopic ? `${defaultTopicSkills.length} skills destacadas del topic ${DEFAULT_TOPIC.label}.` : `${filteredSkills.length} skills visibles en la seleccion actual.`}</p>
-            <p class="results-copy">${usingDefaultTopic ? "Vista inicial curada para evitar ruido y reducir scroll en discovery." : `${state.sourceLabel !== "All" ? `Origen: ${state.sourceLabel}. ` : ""}${state.repoName !== "All" ? `Repo: ${state.repoName}. ` : ""}Pagina ${state.page} de ${totalPages} con navegacion acotada.`}</p>
+            <p class="results-copy">${usingDefaultTopic ? `${defaultTopicSkills.length} featured skills from the ${DEFAULT_TOPIC.label} topic.` : `${filteredSkills.length} skills visible in the current selection.`}</p>
+            <p class="results-copy">${usingDefaultTopic ? "Curated initial view to reduce noise and scroll on discovery." : `${state.sourceLabel !== "All" ? `Source: ${state.sourceLabel}. ` : ""}${state.repoName !== "All" ? `Repo: ${state.repoName}. ` : ""}Page ${state.page} of ${totalPages} with bounded navigation.`}</p>
           </div>
         </section>
 
-        <section class="catalog-grid" id="descargas">
+        <section class="catalog-grid" id="downloads">
           ${paginatedSkills.map((skill) => {
             const alerts = getSkillAlerts(skill);
             const badges = getSkillBadges(skill);
@@ -805,7 +805,7 @@ runtime             = "npm run dev"</code></pre>
                     <span class="section-pill">${skill.category}</span>
                     <span class="article-date">${formatDateLabel(skill.lastReviewed)}</span>
                   </div>
-                  <button class="favorite-button ${state.favorites.has(skill.id) ? "is-active" : ""}" type="button" aria-label="Marcar ${skill.name} como favorita" data-favorite-skill="${skill.id}">★</button>
+                  <button class="favorite-button ${state.favorites.has(skill.id) ? "is-active" : ""}" type="button" aria-label="Mark ${skill.name} as favorite" data-favorite-skill="${skill.id}">★</button>
                 </div>
 
                 <div class="skill-card-header">
@@ -830,8 +830,8 @@ runtime             = "npm run dev"</code></pre>
                   <div><dt>Source path</dt><dd class="mono">${skill.path}</dd></div>
                 </dl>
                 <div class="card-actions">
-                  <button class="button button-primary" type="button" data-download-skill="${skill.id}" ${skill.zipAvailable ? "" : "disabled"}>${skill.zipAvailable ? "Descargar" : "ZIP pendiente"}</button>
-                  <button class="button button-secondary" type="button" data-skill-detail="${skill.id}">Ficha tecnica</button>
+                  <button class="button button-primary" type="button" data-download-skill="${skill.id}" ${skill.zipAvailable ? "" : "disabled"}>${skill.zipAvailable ? "Download" : "ZIP pending"}</button>
+                  <button class="button button-secondary" type="button" data-skill-detail="${skill.id}">Technical sheet</button>
                 </div>
               </article>
             `;
@@ -839,43 +839,43 @@ runtime             = "npm run dev"</code></pre>
         </section>
 
         <div class="catalog-pagination">
-          <button class="button button-secondary" type="button" data-page-action="prev" ${state.page <= 1 ? "disabled" : ""}>Anterior</button>
-          <p class="results-copy">Mostrando ${paginatedSkills.length} de ${visibleSkillsSource.length} skills.</p>
-          <button class="button button-secondary" type="button" data-page-action="next" ${state.page >= totalPages ? "disabled" : ""}>Siguiente</button>
+          <button class="button button-secondary" type="button" data-page-action="prev" ${state.page <= 1 ? "disabled" : ""}>Previous</button>
+          <p class="results-copy">Showing ${paginatedSkills.length} of ${visibleSkillsSource.length} skills.</p>
+          <button class="button button-secondary" type="button" data-page-action="next" ${state.page >= totalPages ? "disabled" : ""}>Next</button>
         </div>
       </div>
 
       <aside class="dashboard-side">
         <section class="side-panel hub-ops-panel">
           <div class="admin-header">
-            <div><p class="eyebrow">Hub operations</p><h4>Mantenimiento del hub</h4></div>
+            <div><p class="eyebrow">Hub operations</p><h4>Hub maintenance</h4></div>
             <span class="admin-status ${state.adminZipBusy || state.adminDiscoveryBusy ? "is-saving" : ""}">${hubOpsStatus}</span>
           </div>
-          <p class="side-copy">Estas acciones operan sobre el hub completo. No pertenecen a la edición de una ficha concreta del catálogo.</p>
+          <p class="side-copy">These actions operate on the entire hub. They do not belong to editing a specific catalog entry.</p>
           <div class="hub-ops-grid">
-            <button class="button button-secondary" id="admin-discover" type="button">Descubrir en disco</button>
-            <button class="button button-secondary" id="admin-regenerate" type="button">Regenerar ZIPs</button>
+            <button class="button button-secondary" id="admin-discover" type="button">Discover on disk</button>
+            <button class="button button-secondary" id="admin-regenerate" type="button">Regenerate ZIPs</button>
           </div>
-          <p class="admin-message">${state.adminZipMessage || "Descubrir sincroniza el inventario detectado. Regenerar rehace los paquetes descargables del catálogo actual."}</p>
-          <p class="admin-message">${state.adminDiscoveryBusy ? "Buscando SKILL.md en las rutas soportadas y refrescando el inventario..." : "Las operaciones globales se ejecutan sin modificar la ficha que estás editando."}</p>
+          <p class="admin-message">${state.adminZipMessage || "Discover syncs the detected inventory. Regenerate rebuilds the downloadable packages from the current catalog."}</p>
+          <p class="admin-message">${state.adminDiscoveryBusy ? "Searching for SKILL.md in supported paths and refreshing the inventory..." : "Global operations run without modifying the entry you are currently editing."}</p>
         </section>
 
         <section class="side-panel admin-panel">
           <div class="admin-header">
-            <div><p class="eyebrow">Admin studio</p><h4>Editar catalogo</h4></div>
-            <span class="admin-status ${state.adminSaving ? "is-saving" : ""}">${state.adminSaving ? "Guardando..." : "Editable"}</span>
+            <div><p class="eyebrow">Admin studio</p><h4>Edit catalog</h4></div>
+            <span class="admin-status ${state.adminSaving ? "is-saving" : ""}">${state.adminSaving ? "Saving..." : "Editable"}</span>
           </div>
           <div class="admin-form">
             <label class="admin-field">
               <span>Skill</span>
               <select id="admin-skill-select">
-                ${skills.map((skill) => `<option value="${skill.id}" ${skill.id === adminSkill?.id ? "selected" : ""}>${skill.name}${skill.variant ? ` / ${skill.variant}` : ""}${skill.locationCount > 1 ? ` (${skill.locationCount} ubicaciones)` : ""}${skill.sourceLabel ? ` - ${skill.sourceLabel}` : ""}</option>`).join("")}
+                ${skills.map((skill) => `<option value="${skill.id}" ${skill.id === adminSkill?.id ? "selected" : ""}>${skill.name}${skill.variant ? ` / ${skill.variant}` : ""}${skill.locationCount > 1 ? ` (${skill.locationCount} locations)` : ""}${skill.sourceLabel ? ` - ${skill.sourceLabel}` : ""}</option>`).join("")}
               </select>
             </label>
 
             <div class="admin-toolbar">
-              <button class="button button-secondary" id="admin-create" type="button">Nueva skill</button>
-              <button class="button button-secondary" id="admin-delete" type="button">Eliminar</button>
+              <button class="button button-secondary" id="admin-create" type="button">New skill</button>
+              <button class="button button-secondary" id="admin-delete" type="button">Delete</button>
             </div>
 
             <div class="admin-grid">
@@ -896,16 +896,16 @@ runtime             = "npm run dev"</code></pre>
             <label class="admin-field"><span>Description</span><textarea data-admin-field="description" rows="5">${adminSkill?.description || ""}</textarea></label>
 
             <div class="admin-actions">
-              <button class="button button-primary" id="admin-save" type="button">Guardar cambios</button>
-              <button class="button button-secondary" id="admin-reset" type="button">Reset visual</button>
+              <button class="button button-primary" id="admin-save" type="button">Save changes</button>
+              <button class="button button-secondary" id="admin-reset" type="button">Visual reset</button>
             </div>
-            <p class="admin-message">${state.adminMessage || "Los cambios se guardan en data/skills.catalog.json."}</p>
+            <p class="admin-message">${state.adminMessage || "Changes are saved to data/skills.catalog.json."}</p>
           </div>
         </section>
 
         <section class="side-panel">
           <p class="eyebrow">Latest review</p>
-          <h4>Ultimas skills revisadas</h4>
+          <h4>Latest reviewed skills</h4>
           <div class="review-list">
             ${latestReviews.map((skill) => `<article class="review-item"><span class="review-date">${skill.lastReviewed}</span><strong>${skill.name}</strong><p>${skill.maintainer}</p></article>`).join("")}
           </div>
@@ -914,13 +914,13 @@ runtime             = "npm run dev"</code></pre>
         ${discoverySources.length ? `
           <section class="side-panel">
             <p class="eyebrow">Discovery map</p>
-            <h4>Donde se han encontrado</h4>
+            <h4>Where they were found</h4>
             <div class="review-list">
               ${discoverySources.map((source) => `
                 <article class="review-item">
                   <span class="review-date">${formatNumber(source.count)} skills</span>
                   <strong>${source.label}</strong>
-                  <p>Inventario sincronizado desde disco local.</p>
+                  <p>Inventory synced from local disk.</p>
                 </article>
               `).join("")}
             </div>
@@ -929,7 +929,7 @@ runtime             = "npm run dev"</code></pre>
 
         <section class="side-panel side-panel-accent">
           <p class="eyebrow">Needs attention</p>
-          <h4>Skills a revisar</h4>
+          <h4>Skills to review</h4>
           <div class="review-list">
             ${attentionQueue.map((skill) => `
               <article class="review-item">
@@ -947,9 +947,9 @@ runtime             = "npm run dev"</code></pre>
     ${detailSkill ? `
       <div class="modal-backdrop" data-close-modal="true">
         <section class="skill-modal" role="dialog" aria-modal="true" aria-labelledby="skill-modal-title" aria-describedby="skill-modal-description" tabindex="-1">
-          <button class="modal-close" type="button" aria-label="Cerrar ficha tecnica" data-close-modal="true">Cerrar</button>
+          <button class="modal-close" type="button" aria-label="Close technical sheet" data-close-modal="true">Close</button>
           <div class="modal-header">
-            <div><p class="eyebrow">Ficha tecnica</p><h3 id="skill-modal-title">${detailSkill.name}</h3></div>
+            <div><p class="eyebrow">Technical sheet</p><h3 id="skill-modal-title">${detailSkill.name}</h3></div>
             <div class="modal-score"><span>Scorecard</span><strong>${detailSkill.score}/100</strong></div>
           </div>
           ${renderModalBody(detailSkill)}
@@ -984,7 +984,7 @@ runtime             = "npm run dev"</code></pre>
   document.querySelector("#admin-delete")?.addEventListener("click", deleteSelectedSkill);
   document.querySelector("#admin-discover")?.addEventListener("click", discoverSkills);
   document.querySelector("#admin-regenerate")?.addEventListener("click", regenerateZips);
-  document.querySelector("#admin-reset")?.addEventListener("click", () => { state.adminMessage = "Cambios locales descartados. Recargando catalogo..."; bootstrap(); });
+  document.querySelector("#admin-reset")?.addEventListener("click", () => { state.adminMessage = "Local changes discarded. Reloading catalog..."; bootstrap(); });
   document.querySelector("#admin-save")?.addEventListener("click", persistCatalog);
 
   const handleAdminFieldUpdate = (event) => {
@@ -1036,8 +1036,8 @@ const bootstrap = async () => {
     render();
   } catch (error) {
     renderMessage(
-      "No se pudo cargar el catalogo.",
-      `La landing no ha podido recuperar /api/catalog. ${error instanceof Error ? error.message : "Unknown error"}.`
+      "Could not load the catalog.",
+      `The landing could not retrieve /api/catalog. ${error instanceof Error ? error.message : "Unknown error"}.`
     );
   }
 };
