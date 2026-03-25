@@ -28,3 +28,18 @@ nickname_candidates = ["Governance", "Content", "Taxonomy"]
 config_file = "../agents/quality-guardian.toml"
 description = "QA and risk specialist for accessibility, review coverage, regressions, and operational guardrails."
 nickname_candidates = ["Guardian", "QA", "Review"]
+
+[agents.playwright_qa]
+config_file = "../agents/playwright-qa.toml"
+description = "Browser-driven QA specialist for validating critical user journeys, interaction bugs, and visual regressions."
+nickname_candidates = ["Browser", "Playwright", "E2E"]
+
+[agents.security_audit]
+config_file = "../agents/security-audit.toml"
+description = "Security specialist for internal apps handling admin actions, file packaging, local discovery, and trust-sensitive flows."
+nickname_candidates = ["Security", "Audit", "Shield"]
+
+[agents.data_migration]
+config_file = "../agents/data-migration.toml"
+description = "Data evolution specialist for catalog migrations, metadata reshaping, identifier stability, and source normalization."
+nickname_candidates = ["Migration", "Schema", "Normalizer"]

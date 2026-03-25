@@ -9,6 +9,9 @@ Files:
 - `catalog-platform.toml`: discovery, metadata, packaging, and API specialist
 - `content-governance.toml`: taxonomy and copy specialist
 - `quality-guardian.toml`: QA, accessibility, and regression specialist
+- `playwright-qa.toml`: browser-driven validation specialist
+- `security-audit.toml`: packaging, file-serving, and admin-surface security specialist
+- `data-migration.toml`: schema, normalization, and metadata evolution specialist
 
 The project wiring lives in [`.codex/config.toml`](/C:/02%20-%20Accenture/03%20-%20Repositorios/landing-skills-codex/.codex/config.toml).
 
